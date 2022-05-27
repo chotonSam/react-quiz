@@ -12,7 +12,6 @@ export default function Login() {
       <div className="column">
         <Illustration signImg={logImg} alt="Login" />
         <Form className={`${classes.login}`}>
-
           <TextInput
             type="text"
             placeholder="Enter email"
@@ -21,7 +20,9 @@ export default function Login() {
 
           <TextInput type="password" placeholder="Enter password" name="lock" />
 
-          <Button>Submit now</Button>
+          <Button>
+            <span>Submit now</span>
+          </Button>
 
           <div class="info">
             Don't have an account? <a href="signup.html">Signup</a> instead.

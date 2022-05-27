@@ -11,7 +11,7 @@ export default function Signup() {
     <>
       <h1>Create an account</h1>
       <div className="column">
-        <Illustration signImg={signImg} alt="Signup"/>
+        <Illustration signImg={signImg} alt="Signup" />
         <Form className={`${classes.signup}`}>
           <TextInput type="text" placeholder="Enter name" name="person" />
 
@@ -29,9 +29,11 @@ export default function Signup() {
             name="lock_clock"
           />
 
-          <Checkbox type="checkbox">Agree to the Terms &amp; Conditions</Checkbox>
+          <Checkbox text="Agree to the Terms &amp; Conditions" />
 
-          <Button>Submit now</Button>
+          <Button>
+            <span>Submit now</span>
+          </Button>
 
           <div class="info">
             Already have an account? <a href="login.html">Login</a> instead.
