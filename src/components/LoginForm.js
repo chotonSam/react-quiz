@@ -6,14 +6,14 @@ import Form from "./Form";
 import TextInput from "./TextInput";
 
 export default function LoginForm() {
-  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [loading, setLoading] = useState();
   const [error, setError] = useState();
+  const [loading, setLoading] = useState();
 
-  const history = useHistory();
   const { login } = useAuth();
+  const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -24,40 +24,40 @@ export default function LoginForm() {
       await login(email, password);
       history.push("/");
     } catch (err) {
+      console.log(err);
       setLoading(false);
-      setError("Faield to log in");
+      setError("Failed to login!");
     }
   }
 
   return (
-    <Form style={{ height: "300px" }} onSubmit={handleSubmit}>
+    <Form style={{ height: "330px" }} onSubmit={handleSubmit}>
       <TextInput
-        type="email"
+        type="text"
         placeholder="Enter email"
-        name="alternate_email"
+        icon="alternate_email"
+        required
         value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
+        onChange={(e) => setEmail(e.target.value)}
       />
 
       <TextInput
         type="password"
         placeholder="Enter password"
-        name="lock"
+        icon="lock"
+        required
         value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
+        onChange={(e) => setPassword(e.target.value)}
       />
 
-      <Button type="button" disabled={loading}>
-        <span>Submit now</span>
+      <Button type="submit" disabled={loading}>
+        <span>Submit Now</span>
       </Button>
+
       {error && <p className="error">{error}</p>}
 
-      <div class="info">
-        Don't have an account? <Link to="signup">Signup</Link> instead.
+      <div className="info">
+        Don't have an account? <Link to="/signup">Signup</Link> instead.
       </div>
     </Form>
   );
